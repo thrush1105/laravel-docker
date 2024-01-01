@@ -6,8 +6,6 @@ services:
       - ./app/src:/var/www/app
       - vendor:/var/www/app/vendor
       - storage:/var/www/app/storage
-    ports:
-      - "8000:8000"
   db:
     image: mysql:8.0.33
     volumes:
