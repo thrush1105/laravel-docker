@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
+
 class HelloController
 {
     public function hello()
     {
-        return response("Hello!!");
+        Log::debug("Hello!!");
+        return response("Hello!!!");
     }
 }
