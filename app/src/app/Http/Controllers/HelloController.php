@@ -6,6 +6,6 @@ class HelloController
 {
     public function hello()
     {
-        return response("Hello!!!");
+        return response("Hello!!");
     }
 }
