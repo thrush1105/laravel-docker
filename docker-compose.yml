@@ -1,19 +1,5 @@
-version: "3.0"
+version: "3.9"
 services:
-  app:
-    build: ./app
-    volumes:
-      - ./app/src:/var/www/app
-      - vendor:/var/www/app/vendor
-      - storage:/var/www/app/storage
-  db:
-    image: mysql:8.0.33
-    volumes:
-      - ./db/data:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_PASSWORD: root
   web:
     image: nginx:1.25
     volumes:
@@ -21,11 +7,21 @@ services:
       - ./web/log:/var/log/nginx
       - ./app/src:/var/www/app
       - vendor:/var/www/app/vendor
-      - storage:/var/www/app/storage
     ports:
       - "80:80"
     working_dir: /var/www/app
+  app:
+    build: ./app
+    volumes:
+      - ./app/src:/var/www/app
+      - vendor:/var/www/app/vendor
+  db:
+    image: mysql:8.0.33
+    volumes:
+      - ./db/data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root
 
 volumes:
   vendor:
-  storage:
